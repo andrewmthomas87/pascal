@@ -41,14 +41,18 @@
 			count = 1;
 
 			function resize() {
-				$('h1').css('font-size', $(window).width() / count);
+				$('h1').css('font-size', Math.min($(window).height() / 4, $(window).width() / count));
 			}
 
 			$(document).ready(resize);
 			$(window).resize(resize);
 			$(document).scroll(function() {
+				if ($(window).scrollTop() < 50) {
+					return;
+				}
+				window.scrollTo(0, 0);
 				count++;
-				$('body').append('<h1>' + count + '</h1>');
+				$('div').append('<h1>' + count + '</h1>');
 				resize();
 			});
 		</script>
