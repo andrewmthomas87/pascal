@@ -41,13 +41,13 @@
 			count = 1;
 
 			function resize() {
-				$('h1').css('font-size', Math.min($(window).height() / 4, $(window).width() / count));
+				$('h1').css('font-size', Math.min($(window).height() / 4, $(window).height() / (count * 1.125)));
 			}
 
 			$(document).ready(resize);
 			$(window).resize(resize);
 			$(document).scroll(function() {
-				if ($(window).scrollTop() < 50) {
+				if ($(window).scrollTop() < $(window).height() / 4) {
 					return;
 				}
 				window.scrollTo(0, 0);
