@@ -47,7 +47,8 @@
 			digits = 1;
 
 			function resize() {
-				$('h1').css('font-size', $(window).width() / (count * 15) + 'px');
+				$('span').css('width', $(window).width() / (count * 1.5 * digits) + 'px');
+				$('h1').css('font-size', $(window).width() / (count * 1.5 * digits * digits) + 'px');
 			}
 
 			$(document).ready(resize);
@@ -61,14 +62,18 @@
 				var previous = -1;
 				$('h1:nth-child(' + count + ') span').each(function() {
 					if (previous != -1) {
-						sequence += ' <span>' + (parseInt($(this).html()) + previous) + '</span>';
+						var current = parseInt($(this).html()) + previous;
+						if (current.toString().length > digits) {
+							digits = current.toString().length;
+						}
+						sequence += ' <span>' + current + '</span>';
 					}
 					previous = parseInt($(this).html());
 				});
 				sequence += ' <span>1</span>';
 				$('div').append('<h1>' + sequence + '</h1>');
-				resize();
 				count++;
+				resize();
 			});
 		</script>
 	</body>
