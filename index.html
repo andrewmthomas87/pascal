@@ -47,13 +47,7 @@
 			digits = 1;
 
 			function resize() {
-				var maxWidth = 0;
-				$('h1').each(function(){
-					if($(this).width() > maxWidth){
-						maxWidth = $(this).width();
-					}
-				});
-				$('h1').css('font-size', Math.min($(window).height() / 4, Math.min($(window).height() / (count * 1.05), $(window).width() / maxWidth)));
+				$('h1').css('font-size', Math.min($(window).height() / 4, Math.min($(window).height() / (count * 1.05), $(window).width() / $('h1:last-child span').length));
 			}
 
 			$(document).ready(resize);
