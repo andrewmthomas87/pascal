@@ -51,7 +51,7 @@
 				$('h1:last-child span').each(function() {
 					digits += $(this).html().length;
 				});
-				$('h1').css('font-size', Math.min($(window).width() / digits, $(window).height() / count));
+				$('h1').css('font-size', Math.min($(window).width() / (digits / 1.25), $(window).height() / count));
 			}
 
 			$(document).ready(resize);
