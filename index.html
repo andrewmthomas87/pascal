@@ -53,7 +53,7 @@
 						maxWidth = $(this).width();
 					}
 				});
-				$('h1').css('font-size', Math.min($(window).height() / 4, Math.min($(window).height() / (count * 1.05), maxWidth)));
+				$('h1').css('font-size', Math.min($(window).height() / 4, Math.min($(window).height() / (count * 1.05), $(window).width() / maxWidth)));
 			}
 
 			$(document).ready(resize);
