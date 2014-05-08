@@ -4,7 +4,7 @@
 
 	<head>
 		<title>Pascal's Triangle</title>
-		<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
 		<style>
 			body {
 				width: 100%;
@@ -29,16 +29,22 @@
 				font-size: 1em;
 				transition: font-size 0.25s ease;
 			}
+
+			h1 span {
+				display: inline;
+				text-align: center;
+			}
 		</style>
 	</head>
 
 	<body>
 		<div>
-			<h1>1</h1>
+			<h1><span>1</span></h1>
 		</div>
 		<script src='jquery-1.11.0.min.js'></script>
 		<script>
 			count = 1;
+			digits = 1;
 
 			function resize() {
 				var maxWidth = 0;
@@ -46,10 +52,10 @@
 				$('h1').each(function(){
 					if($(this).width() > maxWidth){
 						maxWidth = $(this).width();
-						widestSpan = $(this);
+						widestSpan = $(this); 
 					}
 				});
-				$('h1').css('font-size', Math.min($(window).height() / 4, Math.min($(window).height() / (count * 1.05), $(window).width() / widestH1)));
+				$('h1').css('font-size', Math.min($(window).height() / 4, Math.min($(window).height() / (count * 1.05), widestH1)));
 			}
 
 			$(document).ready(resize);
@@ -59,9 +65,18 @@
 					return;
 				}
 				window.scrollTo(0, 0);
-				count++;
-				$('div').append('<h1>' + count + '</h1>');
+				var sequence = '<span>1</span>';
+				var previous = -1;
+				$('h1:nth-child(' + count + ') span').each(function() {
+					if (previous != -1) {
+						sequence += ' <span>' + (parseInt($(this).html()) + previous) + '</span>';
+					}
+					previous = parseInt($(this).html());
+				});
+				sequence += ' <span>1</span>';
+				$('div').append('<h1>' + sequence + '</h1>');
 				resize();
+				count++;
 			});
 		</script>
 	</body>
