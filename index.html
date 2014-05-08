@@ -55,6 +55,9 @@
 						maxWidth = $(this).width();
 					}
 				});
+				if (maxWidth == 0) {
+					maxWidth = 'auto';
+				}
 				$('h1').css('font-size', Math.min($(window).width() / (digits / 1.4), $(window).height() / count));
 				$('h1 span').css('min-width', maxWidth);
 			}
