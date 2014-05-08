@@ -31,9 +31,8 @@
 			}
 
 			h1 span {
-				display: inline-block;
+				display: inline;
 				text-align: center;
-				width: auto;
 			}
 		</style>
 	</head>
@@ -49,15 +48,10 @@
 
 			function resize() {
 				var digits = 0;
-				var greatestDigits = 0;
 				$('h1:last-child span').each(function() {
 					digits += $(this).html().length;
-					if ($(this).html().length > greatestDigits) {
-						greatestDigits = $(this).html().length;
-					}
 				});
 				$('h1').css('font-size', Math.min($(window).width() / (digits / 1.4), $(window).height() / count));
-				$('h1 span').css('min-width', Math.min($(window).width() / (digits / 1.4), $(window).height() / count) * (greatestDigits / 2));
 			}
 
 			$(document).ready(resize);
