@@ -47,8 +47,8 @@
 			digits = 1;
 
 			function resize() {
-				$('span').css('width', $(window).width() / (count * 1.5 * digits) + 'px');
-				$('h1').css('font-size', $(window).width() / (count * 1.5 * digits * digits) + 'px');
+				$('h1 span').css('min-width', $(window).width() / (count * 1.5 * digits) + 'px');
+				$('h1').css('font-size', $(window).width() / (count * 3 * digits) + 'px');
 			}
 
 			$(document).ready(resize);
