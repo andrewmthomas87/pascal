@@ -48,7 +48,7 @@
 
 			function resize() {
 				$('h1 span').css('min-width', $(window).width() / (count * 1.5 * digits) + 'px');
-				$('h1').css('font-size', ($(window).width() / (count * 1.5 * digits) / digits) + 'px');
+				$('h1').css('font-size', Math.min($(window).width() / count, $(window).height() / count));
 			}
 
 			$(document).ready(resize);
