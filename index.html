@@ -29,16 +29,22 @@
 				font-size: 1em;
 				transition: font-size 0.25s ease;
 			}
+
+			h1 span {
+				display: inline;
+				text-align: center;
+			}
 		</style>
 	</head>
 
 	<body>
 		<div>
-			<h1>1</h1>
+			<h1><span>1</span></h1>
 		</div>
 		<script src='jquery-1.11.0.min.js'></script>
 		<script>
 			count = 1;
+			digits = 1;
 
 			function resize() {
 				$('h1').css('font-size', Math.min($(window).height() / 4, $(window).height() / (count * 1.05)));
@@ -51,9 +57,18 @@
 					return;
 				}
 				window.scrollTo(0, 0);
-				count++;
-				$('div').append('<h1>' + count + '</h1>');
+				var sequence = '<span>1</span>';
+				var previous = -1;
+				$('h1:nth-child(' + count + ') span').each(function() {
+					if (previous != -1) {
+						sequence += ' <span>' + ($(this).html() + previous) + '</span>';
+					}
+					previous = parseInt($(this).html());
+				});
+				sequence += ' <span>1</span>';
+				$('div').append('<h1>' + sequence + '</h1>');
 				resize();
+				count++;
 			});
 		</script>
 	</body>
