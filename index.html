@@ -3,7 +3,7 @@
 <html>
 
 	<head>
-		<title>Pascal's Triangle</title>
+		<title>Pascal's Triangle (updated)</title>
 		<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
 		<style>
 			body {
@@ -47,7 +47,7 @@
 			digits = 1;
 
 			function resize() {
-				$('h1').css('font-size', Math.min($(window).height() / 4, Math.min($(window).height() / (count * 1.05), $(window).width() / ($('h1:last-child span').length * 1.5))));
+				$('h1').css('font-size', Math.min($(window).height() / 4, Math.min($(window).height() / (count * 1.05), $(window).width() / (count * 1.5))));
 			}
 
 			$(document).ready(resize);
